@@ -19,6 +19,7 @@ def parse(url, proxies=None):
     return 'failed to get the link'
 
 if __name__ == '__main__':
-  a_proxy = proxy.get_a_proxy()
+  a_proxy = {'http': 'http://124.192.39.248:3128'}
+  # a_proxy = proxy.get_a_proxy()
   print(a_proxy)
-  print(parse('http://91porn.com/view_video.php?viewkey=10dbdc2e848c104e5f3c', proxies=a_proxy));
+  print(parse('http://91.91p30.space/view_video.php?viewkey=10dbdc2e848c104e5f3c', a_proxy));
