@@ -67,5 +67,5 @@ def get_a_premium_proxy():
   proxies['http'] = random.choice(all_proxies)
   return proxies
 
-if __name__ == '__main__':
-  print(get_a_premium_proxy())
+# if __name__ == '__main__':
+#   print(get_a_premium_proxy())
