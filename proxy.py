@@ -1,6 +1,7 @@
 import requests
 import random
 import parser
+import json
 from bs4 import BeautifulSoup
 
 def get_a_proxy():
@@ -50,5 +51,21 @@ def get_a_chinese_proxy():
   proxies['http'] = random.choice(all_proxies)
   return proxies
 
+def get_a_premium_proxy():
+  proxies = {}
+  all_proxies = []
+  r = requests.get("http://www.mogumiao.com/proxy/free/listFreeIp")
+  data = json.loads(r.content)
+  for item in data['msg']:
+    ip = item['ip']
+    port = item['port']
+    cur_proxy = "http://{}:{}".format(ip, port)
+    all_proxies.append(cur_proxy)
+
+  if not len(all_proxies):
+    raise AssertionError('No proxy is valid')
+  proxies['http'] = random.choice(all_proxies)
+  return proxies
+
 if __name__ == '__main__':
-  print(get_a_proxy())
+  print(get_a_premium_proxy())
