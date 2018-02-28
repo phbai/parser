@@ -1,19 +1,20 @@
 from flask import Flask, request
 import parser
-import proxy
+import server
 from flask import jsonify
 
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'visit /get?url=http://xxxx'
+    return 'visit /get?url=http://91.91p30.space/view_video.php?viewkey=10dbdc2e848c104e5f3c'
 
 @app.route('/get')
 def get_url():
-  a_proxy = proxy.get_a_premium_proxy()
+  proxy_url = server.get_redis_proxy()
+  proxy = {'http': proxy_url}
   url = request.args.get('url')
-  result, status = parser.parse(url, a_proxy)
+  result, status = parser.parse(url, proxy)
 
   if status:
     return jsonify({'status': 'failed', 'result': result})
