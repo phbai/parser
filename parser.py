@@ -14,7 +14,7 @@ def parse(url, proxies=None):
     r = requests.get(url)
 
   html = r.content.decode('utf-8')
-  soup = BeautifulSoup(html, 'lxml')
+  soup = BeautifulSoup(html, 'html.parser')
 
   title = soup.title.string.split('\n')[0].strip()
   try:
