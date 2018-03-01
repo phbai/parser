@@ -1,5 +1,4 @@
 Flask
 requests
 BeautifulSoup4
-lxml
 redis
