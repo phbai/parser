@@ -5,10 +5,5 @@ services:
 
   web:
     build: .
-    command: python main.py
-    volumes:
-      - .:/code
     ports:
       - "8000:8000"
-    links:
-      - redis

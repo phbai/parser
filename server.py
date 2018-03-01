@@ -2,7 +2,7 @@ import redis
 import time
 import proxy
 
-r = redis.StrictRedis(host='redis', port=6379, db=0)
+r = redis.Redis(host='redis', port=6379)
 
 def set_a_proxy(proxy):
   r.set('proxy', proxy, ex=60)
